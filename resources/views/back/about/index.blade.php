@@ -68,6 +68,19 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label for="about">Logo</label>
+                                            <input type="file" name="photo" class="form-control" id="logo" placeholder="Logo" data-validation-required-message="Company Logo">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                                     <div class="col-12">
                                         <div class="form-group">
                                             <div class="controls">

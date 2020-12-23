@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Slide;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SlideController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +24,9 @@ class SlideController extends Controller
     public function index()
     {
         //
+        $slides=Slide::all();
+
+        return view('back.carousel.index')->with(['slides'=>$slides]);
     }
 
     /**
@@ -25,6 +37,8 @@ class SlideController extends Controller
     public function create()
     {
         //
+
+        return view('back.carousel.create')->with([]);
     }
 
     /**
@@ -36,6 +50,38 @@ class SlideController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'photo' => 'mimes:jpeg,png|max:1024'
+
+        ]);
+        $url='/img/slide/slide1.jpg';
+        if($request->has('photo'))
+        {
+
+            try{
+
+                $extension = $request->photo->extension();
+                $request->photo->storeAs('/public', $validatedData['title'].time().".".$extension);
+                $url = Storage::url($validatedData['title'].time().".".$extension);
+
+            }catch(Exception $ex){
+                print('Image not Uploaded'.$ex);
+            }
+
+        }else{
+            print('Photo not found');
+        }
+
+        $slide = new Slide;
+        $slide->title = $request->title;
+        $slide->subtitle = $request->subtitle;
+        $slide->photo =$url;
+
+        $slide->save();
+        return redirect()->back()->with(['success'=>'Carousel Slide Created','slide'=>$slide]);
+
+
     }
 
     /**
@@ -47,6 +93,8 @@ class SlideController extends Controller
     public function show(Slide $slide)
     {
         //
+
+        return view('back.carousel.show')->with(['slide'=>$slide]);
     }
 
     /**
@@ -58,6 +106,8 @@ class SlideController extends Controller
     public function edit(Slide $slide)
     {
         //
+
+        return view('back.carousel.edit')->with(['slide'=>$slide]);
     }
 
     /**
@@ -81,5 +131,12 @@ class SlideController extends Controller
     public function destroy(Slide $slide)
     {
         //
+
+//        $slide = Slide::findOrFail($id);
+
+        $slide->delete();
+
+
+        return redirect()->back()->with('success','Slide Removed');
     }
 }

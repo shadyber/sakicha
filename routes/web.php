@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+
+Route::get('/', [App\Http\Controllers\FrontController::class, 'index'])->name('welcome');
+
+Route::get('/w_admin', [App\Http\Controllers\DashboardController::class, 'index'])->name('admin');
+
 
 Auth::routes();
 
@@ -34,3 +36,13 @@ Route::resource('/blog', App\Http\Controllers\BlogController::class);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/storagelink', function () {
+    Artisan::call('storage:link');
+});
+
+Route::get('/fresh', function () {
+    Artisan::call('migrate:fresh --seed');
+    print('done');
+});
