@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Album;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+
 class AlbumController extends Controller
 {
     /**
@@ -14,7 +16,10 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+
+        $albums=Album::all();
+
+        return view('back.album.index')->with(['albums'=>$albums]);
     }
 
     /**
@@ -24,7 +29,10 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+        $albums=Album::all();
+
+        return view('back.album.create')->with(['albums'=>$albums]);
+
     }
 
     /**
@@ -35,7 +43,39 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'photo' => 'mimes:jpeg,png|max:1024'
+
+        ]);
+        $url='/img/slide/slide1.jpg';
+        if($request->has('photo'))
+        {
+
+            try{
+
+                $extension = $request->photo->extension();
+                $request->photo->storeAs('/public', $validatedData['name'].time().".".$extension);
+                $url = Storage::url($validatedData['name'].time().".".$extension);
+
+            }catch(Exception $ex){
+                print('Image not Uploaded'.$ex);
+            }
+
+        }else{
+            print('Photo not found');
+        }
+
+        $album = new Album;
+        $album->name = $request->name;
+        $album->detail = $request->detail;
+        $album->photo =$url;
+
+        $album->save();
+
+        return redirect()->back()->with(['success'=>'Album Created','album'=>$album]);
+
+
     }
 
     /**
@@ -46,7 +86,8 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        //
+
+        return view('back.album.show')->with(['album'=>$album]);
     }
 
     /**
@@ -57,7 +98,8 @@ class AlbumController extends Controller
      */
     public function edit(Album $album)
     {
-        //
+
+        return view('back.album.edit')->with(['album'=>$album]);
     }
 
     /**
@@ -69,7 +111,15 @@ class AlbumController extends Controller
      */
     public function update(Request $request, Album $album)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+
+        ]);
+
+            $input = $request->all();
+            $album->fill($input)->save();
+            return redirect()->back()->with('success','Album Updated');
+
     }
 
     /**
@@ -80,6 +130,9 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
-        //
+           //
+           $album->delete();
+           return redirect()->back()->with('success','Removed');
+
     }
 }

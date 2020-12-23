@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Station;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class StationController extends Controller
 {
@@ -14,7 +16,10 @@ class StationController extends Controller
      */
     public function index()
     {
-        //
+        $stations=Station::all();
+
+        return view('back.station.index')->with(['stations'=>$stations]);
+
     }
 
     /**
@@ -24,7 +29,10 @@ class StationController extends Controller
      */
     public function create()
     {
-        //
+        $stations=Station::all();
+
+        return view('back.station.create')->with(['stations'=>$stations]);
+
     }
 
     /**
@@ -35,7 +43,39 @@ class StationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'name' => ['required', 'max:255'],
+            'photo' => 'mimes:jpeg,png|max:1024',
+            'detail' => ['required'],
+        ]);
+
+        $url='/img/product_placeholder.png';
+        if($request->has('photo'))
+        {
+
+            try{
+
+                $extension = $request->photo->extension();
+                $request->photo->storeAs('/public', $validatedData['name'].".".$extension);
+                $url = Storage::url($validatedData['name'].".".$extension);
+
+            }catch(Exception $ex){
+
+            }
+
+        }
+        $station = new Station;
+        $station->name = $request->name;
+        $station->detail = $request->detail;
+        $station->banner =$url;
+        $station->address =$request->address;
+        $station->size =$request->size;
+        $station->altitude =$request->altitude;
+
+        $station->save();
+        return redirect()->back()->with(['success'=>'Product Created','stations'=>$station]);
+
     }
 
     /**
@@ -46,7 +86,8 @@ class StationController extends Controller
      */
     public function show(Station $station)
     {
-        //
+
+        return view('back.station.show')->with(['station'=>$station]);
     }
 
     /**
@@ -57,7 +98,8 @@ class StationController extends Controller
      */
     public function edit(Station $station)
     {
-        //
+
+        return view('back.station.edit')->with(['station'=>$station]);
     }
 
     /**
@@ -69,7 +111,19 @@ class StationController extends Controller
      */
     public function update(Request $request, Station $station)
     {
-        //
+        $station = Station::findOrFail($station->id);
+
+        $this->validate($request, [
+            'name' => 'required',
+            'detail' => 'required'
+
+        ]);
+
+        $input = $request->all();
+
+        $station->fill($input)->save();
+        return redirect()->back()->with(['success'=>'Station Update Successfuly']);
+
     }
 
     /**
@@ -80,6 +134,8 @@ class StationController extends Controller
      */
     public function destroy(Station $station)
     {
-        //
+        $station->delete();
+        return redirect()->back()->with('success','Removed');
+
     }
 }

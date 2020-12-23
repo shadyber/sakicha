@@ -14,7 +14,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services=Service::all();
+
+        return view('back.service.index')->with(['services'=>$services]);
+
     }
 
     /**
@@ -24,7 +27,11 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+            //
+            $services=Service::all();
+
+            return view('back.service.create')->with(['services'=>$services]);
+
     }
 
     /**
@@ -46,7 +53,8 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+
+        return view('back.service.show')->with(['service'=>$service]);
     }
 
     /**
@@ -57,7 +65,8 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+
+        return view('back.service.edit')->with(['service'=>$service]);
     }
 
     /**

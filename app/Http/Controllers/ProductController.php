@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -15,6 +17,10 @@ class ProductController extends Controller
     public function index()
     {
         //
+        $products=Product::all();
+
+        return view('back.product.index')->with(['products'=>$products]);
+
     }
 
     /**
@@ -24,7 +30,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('back.product.create')->with([]);
     }
 
     /**
@@ -35,7 +42,37 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $validatedData = $request->validate([
+            'name' => ['required', 'max:255'],
+            'photo' => 'mimes:jpeg,png|max:1024',
+            'detail' => ['required'],
+        ]);
+
+        $url='/img/product_placeholder.png';
+        if($request->has('photo'))
+        {
+
+            try{
+
+                $extension = $request->photo->extension();
+                $request->photo->storeAs('/public', $validatedData['name'].".".$extension);
+                $url = Storage::url($validatedData['name'].".".$extension);
+
+            }catch(Exception $ex){
+
+            }
+
+        }
+        $product = new Product;
+        $product->name = $request->name;
+        $product->detail = $request->detail;
+        $product->photo =$url;
+        $product->save();
+        return redirect()->back()->with(['success'=>'Product Created','jobs'=>$product]);
+
+
     }
 
     /**
@@ -47,6 +84,8 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
+
+        return  view('back.product.show')->with(['product'=>$product]);
     }
 
     /**
@@ -57,7 +96,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('back.product.edit')->with(['product'=>$product]);
+
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
 {
@@ -15,6 +16,12 @@ class AboutController extends Controller
     public function index()
     {
         //
+        $about=About::all()->first();
+
+        if(!$about){
+            return view('back.about.create');
+        }
+        return view('back.about.index')->with(['about'=>$about]);
     }
 
     /**
@@ -24,7 +31,10 @@ class AboutController extends Controller
      */
     public function create()
     {
-        //
+
+        $about=About::all()->first();
+
+        return view('back.about.create')->with(['about'=>$about]);
     }
 
     /**
@@ -35,7 +45,45 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'about' => 'required',
+            'mission' => 'required',
+            'background' => 'required',
+            'vision' => 'required'
+
+        ]);
+        $url='';
+        if($request->has('photo'))
+        {
+
+            try{
+
+                $extension = $request->photo->extension();
+                $request->photo->storeAs('/public', $validatedData['name'].".".$extension);
+                $url = Storage::url($validatedData['name'].".".$extension);
+
+            }catch(\Exception $ex){
+
+            }
+
+        }
+
+        $about = new About;
+        $about->name = $request->name;
+        $about->about = $request->about;
+        $about->mission = $request->mission;
+        $about->vision = $request->vision;
+        $about->value = $request->value;
+        $about->goal = $request->goal;
+        $about->background = $request->background;
+        $about->photo =$url;
+        $about->save();
+
+        return redirect()->back()->with(['success'=>'Company Profile Created','about'=>$about]);
+
+
     }
 
     /**
@@ -46,7 +94,9 @@ class AboutController extends Controller
      */
     public function show(About $about)
     {
-        //
+
+
+        return view('back.about.index')->with('about',$about);
     }
 
     /**
@@ -57,7 +107,9 @@ class AboutController extends Controller
      */
     public function edit(About $about)
     {
-        //
+
+
+        return view('back.about.index')->with('about',$about);
     }
 
     /**
@@ -69,7 +121,39 @@ class AboutController extends Controller
      */
     public function update(Request $request, About $about)
     {
-        //
+
+        $about = About::findOrFail($about->id);
+
+        $this->validate($request, [
+            'name' => 'required',
+            'about' => 'required'
+
+        ]);
+
+        $input = $request->all();
+
+        $about->fill($input)->save();
+
+        if($request->has('photo'))
+        {
+            try{
+
+                $extension = $request->photo->extension();
+                $request->photo->storeAs('/public', $request->name.".".$extension);
+                $url = Storage::url($request->name.".".$extension);
+
+            }catch(Exception $ex){
+
+            }
+
+            $about->photo=$url;
+            $about->save();
+
+        }
+
+        return redirect()->back()->with(['success'=>'Company Profile Update Successfuly']);
+
+
     }
 
     /**

@@ -15,6 +15,12 @@ class AddressController extends Controller
     public function index()
     {
         //
+        $address=Address::all()->first();
+        if(!$address){
+            return view('back.address.create');
+        }
+
+        return view('back.address.index')->with(['address'=>$address]);
     }
 
     /**
@@ -24,7 +30,9 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('back.address.create');
+
     }
 
     /**
@@ -35,7 +43,35 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'email' => 'required',
+            'tel' => 'required'
+
+        ]);
+        /*
+        */
+
+        $address = new Address;
+        $address->email = $request->email;
+        $address->tel = $request->tel;
+        $address->tel2 = $request->tel2;
+        $address->location = $request->location;
+        $address->city = $request->city;
+        $address->country = $request->country;
+        $address->fax = $request->fax;
+        $address->address1=$request->address1;
+        $address->address2=$request->address2;
+        $address->facebook = $request->facebook;
+        $address->twitter = $request->twitter;
+        $address->instagram = $request->instagram;
+        $address->google = $request->google;
+        $address->pintrest = $request->pintrest;
+        $address->youtube = $request->youtube;
+        $address->linkedin = $request->linkedin;
+
+        $address->save();
+
+        return  view('back.address.index')->with(['address'=>$address]);
     }
 
     /**
@@ -46,7 +82,9 @@ class AddressController extends Controller
      */
     public function show(Address $address)
     {
-        //
+
+
+        return  view('back.address.index')->with(['address'=>$address]);
     }
 
     /**
@@ -57,7 +95,9 @@ class AddressController extends Controller
      */
     public function edit(Address $address)
     {
-        //
+
+
+        return  view('back.address.index')->with(['address'=>$address]);
     }
 
     /**
@@ -70,6 +110,21 @@ class AddressController extends Controller
     public function update(Request $request, Address $address)
     {
         //
+
+        $address = Address::findOrFail($address->id);
+
+        $this->validate($request, [
+            'email' => 'required',
+            'tel' => 'required'
+
+        ]);
+
+        $input = $request->all();
+
+        $address->fill($input)->save();
+        return redirect()->route('address.index')->with(['success'=>'Address Update Successfuly']);
+
+
     }
 
     /**
@@ -80,6 +135,7 @@ class AddressController extends Controller
      */
     public function destroy(Address $address)
     {
-        //
+        $address->delete();
+        return redirect()->back()->with('success','Removed');
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Photo;
+use App\Models\Album;
+use App\Models\Station;
 use Illuminate\Http\Request;
 
 class PhotoController extends Controller
@@ -14,7 +16,10 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        //
+        $photos=Photo::all();
+
+        return view('back.photo.index')->with(['photos'=>$photos]);
+
     }
 
     /**
@@ -24,7 +29,11 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        //
+        $photos=Photo::all();
+        $albums=Album::all();
+        $stations=Station::all();
+
+        return view('back.photo.create')->with(['photos'=>$photos,'albums'=>$albums,'stations'=>$stations]);
     }
 
     /**
@@ -35,7 +44,40 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'photo' => 'mimes:jpeg,png|max:1024'
+
+        ]);
+        $url='/img/slide/slide1.jpg';
+        //try uplodaing photo with for loop
+        if($request->has('photo'))
+        {
+
+            try{
+
+                $extension = $request->photo->extension();
+                $request->photo->storeAs('/public', $validatedData['title'].time().".".$extension);
+                $url = Storage::url($validatedData['title'].time().".".$extension);
+
+            }catch(Exception $ex){
+                print('Image not Uploaded'.$ex);
+            }
+
+        }else{
+            print('Photo not found');
+        }
+
+        $photo = new Photo;
+        $photo->title = $request->title;
+        $photo->album_id = $request->album_id;
+        $photo->station_id = $request->station_id;
+        $photo->photo =$url;
+
+        $photo->save();
+
+        return redirect()->back()->with(['success'=>'Photo Created','photo'=>$photo]);
+
     }
 
     /**
@@ -46,7 +88,8 @@ class PhotoController extends Controller
      */
     public function show(Photo $photo)
     {
-        //
+
+        return view('admin.photo.index')->with(['photo'=>$photo]);
     }
 
     /**
@@ -57,7 +100,9 @@ class PhotoController extends Controller
      */
     public function edit(Photo $photo)
     {
-        //
+
+
+        return view('back.photo.edit')->with([]);
     }
 
     /**
@@ -69,7 +114,15 @@ class PhotoController extends Controller
      */
     public function update(Request $request, Photo $photo)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+
+        ]);
+
+        $input = $request->all();
+        $photo->fill($input)->save();
+        return redirect()->back()->with('success','Photo Updated');
+
     }
 
     /**
@@ -80,6 +133,8 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
-        //
+
+        $photo->delete();
+        return redirect()->back()->with('success','Removed');
     }
 }
