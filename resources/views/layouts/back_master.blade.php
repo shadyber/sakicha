@@ -10,7 +10,7 @@
     <meta name="description" content="DESCRIPTION HERE">
     <meta name="keywords" content="KEY WORD">
     <meta name="author" content="ROOTSYSTEM">
-    <title>Sakicha | @yield('title')  -> @yield('subtitle')</title>
+    <title>   {{ config('app.name', 'Sakicha') }} | @yield('title')  -> @yield('subtitle')</title>
     <link rel="apple-touch-icon" href="/back/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="/back/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">

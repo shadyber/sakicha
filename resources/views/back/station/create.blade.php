@@ -19,7 +19,7 @@
                         <label>Your Station Name</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon11"><i class="fa fa-closed-captioning"></i></span>
+                                <span class="input-group-text" id="basic-addon11"><i class="fa fa-anchor"></i></span>
                             </div>
                             <input type="text" name="name" class="form-control" placeholder="Staion  Name" aria-label="title" aria-describedby="basic-addon11" required>
                             @error('name')

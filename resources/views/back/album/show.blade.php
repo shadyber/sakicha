@@ -6,7 +6,7 @@
 <div class="row">
     <div class="card col-lg-12 col-md-12 col-sm-12 border-left-primary"><br>{{$album->detail}}
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <a href="/album"><i class="fa fa-list"></i></a>
+            <a href="/album" class="btn btn-primary"><i class="fa fa-list"></i></a>
 
             <h6 class="m-0 font-weight-bold text-primary">{{$album->name}}</h6>
             <div class="dropdown no-arrow">

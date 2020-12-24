@@ -26,7 +26,7 @@
         </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="#about" class="get-started-btn"  data-toggle="modal" data-target="#sampleModal">Sample Order</a>
+      <a href="tel:{{$address->tel}}" class="get-started-btn">Call Us</a>
 
     </div>
   </header><!-- End Header -->

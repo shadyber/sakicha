@@ -11,10 +11,9 @@
                         <!-- li.nav-item.mobile-menu.d-xl-none.mr-auto-->
                         <!--   a.nav-link.nav-menu-main.menu-toggle.hidden-xs(href='#')-->
                         <!--     i.ficon.feather.icon-menu-->
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-todo.html" data-toggle="tooltip" data-placement="top" title="Todo"><i class="ficon feather icon-check-square"></i></a></li>
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-chat.html" data-toggle="tooltip" data-placement="top" title="Chat"><i class="ficon feather icon-message-square"></i></a></li>
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-email.html" data-toggle="tooltip" data-placement="top" title="Email"><i class="ficon feather icon-mail"></i></a></li>
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-calender.html" data-toggle="tooltip" data-placement="top" title="Calendar"><i class="ficon feather icon-calendar"></i></a></li>
+
+                          <li class="nav-item d-none d-lg-block"><a class="nav-link" href="/messages" data-toggle="tooltip" data-placement="top" title="Customers Message"><i class="ficon feather icon-mail"></i> <span class="badge badge-pill badge-primary badge-up">{{\App\Models\Message::unreadMessages()->count()}}</span> </a> </li>
+                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="/order" data-toggle="tooltip" data-placement="top" title="Customer Order"><i class="ficon feather icon-calendar"></i></a> <span class="badge badge-pill badge-primary badge-up">{{\App\Models\Order::allOrders()->count()}}</span></li>
                     </ul>
                     <ul class="nav navbar-nav">
                         <li class="nav-item d-none d-lg-block"><a class="nav-link bookmark-star"><i class="ficon feather icon-star warning"></i></a>
@@ -44,11 +43,11 @@
                             <ul class="search-list search-list-main"></ul>
                         </div>
                     </li>
-                    <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span class="badge badge-pill badge-primary badge-up">5</span></a>
+                    <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span class="badge badge-pill badge-primary badge-up">{{\App\Models\Order::allOrders()->count()}}</span></a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <li class="dropdown-menu-header">
                                 <div class="dropdown-header m-0 p-2">
-                                    <h3 class="white">5 New</h3><span class="notification-title">App Notifications</span>
+                                    <h3 class="white">{{\App\Models\Order::allOrders()->count()}}</h3><span class="notification-title">App Notifications</span>
                                 </div>
                             </li>
                             <li class="scrollable-container media-list"><a class="d-flex justify-content-between" href="javascript:void(0)">

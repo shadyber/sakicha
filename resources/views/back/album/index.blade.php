@@ -7,7 +7,7 @@
         <div class="card col-lg-12 col-md-12 col-sm-12 border-left-primary">
             <div class="card-header">
                 List Albums
-                <a href="/album/create"><i class="fa fa-plus"></i> Create New</a>
+                <a href="/album/create" class="btn btn-primary"><i class="fa fa-plus"></i> Create New</a>
             </div>
 
             <div class="card-body row">

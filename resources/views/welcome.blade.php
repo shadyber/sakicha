@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', ' Sakicha General Import and Export') }} Coffe Export plc.</title>
+    <title>{{ config('app.name', ' Sakicha') }} Coffe Export plc.</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

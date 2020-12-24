@@ -13,38 +13,38 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="/"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
+            <li class=" nav-item"><a href="/dashboard"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
 
             </li>
             <li class=" navigation-header"><span>Information</span>
             </li>
-            <li class="active nav-item"><a href="/about"><i class="feather icon-align-left"></i><span class="menu-title" data-i18n="About">About</span></a>
+            <li class="{{ (request()->is('*about*')) ? 'active' : '' }} nav-item"><a href="/about"><i class="feather icon-align-left"></i><span class="menu-title" data-i18n="About">About</span></a>
             </li>
-            <li class=" nav-item"><a href="/address"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Adress">Address</span></a>
+            <li class="{{ (request()->is('*address*')) ? 'active' : '' }}  nav-item"><a href="/address"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Adress">Address</span></a>
             </li>
-            <li class=" nav-item"><a href="/product"><i class="fa fa-coffee"></i><span class="menu-title" data-i18n="Pruducts">Products</span></a>
+            <li class="{{ (request()->is('*product*')) ? 'active' : '' }}  nav-item"><a href="/product"><i class="fa fa-coffee"></i><span class="menu-title" data-i18n="Pruducts">Products</span></a>
             </li>
-            <li class=" nav-item"><a href="/service"><i class="feather icon-server"></i><span class="menu-title" data-i18n="Service">Service</span></a>
+            <li class="{{ (request()->is('*service*')) ? 'active' : '' }}  nav-item"><a href="/service"><i class="feather icon-server"></i><span class="menu-title" data-i18n="Service">Service</span></a>
             </li>
 
 
             <li class=" navigation-header"><span>Media Elements</span>
             </li>
 
-            <li class=" nav-item"><a href="/album"><i class="fa fa-th-large"></i><span class="menu-title" data-i18n="Album">Album</span></a>
+            <li class="{{ (request()->is('*album*')) ? 'active' : '' }}  nav-item"><a href="/album"><i class="fa fa-th-large"></i><span class="menu-title" data-i18n="Album">Album</span></a>
             </li>
-            <li class=" nav-item"><a href="/photo"><i class="fa fa-image"></i><span class="menu-title" data-i18n="Photo">Photo</span></a>
+            <li class="{{ (request()->is('*photo*')) ? 'active' : '' }}  nav-item"><a href="/photo"><i class="fa fa-image"></i><span class="menu-title" data-i18n="Photo">Photo</span></a>
             </li>
             <li class=" navigation-header"><span>Farms</span>
             </li>
 
-            <li class="nav-item"><a href="/station"><i class="fa fa-location-arrow"></i><span class="menu-title" data-i18n="List Station">List Stations</span></a>
+            <li class="{{ (request()->is('*station*')) ? 'active' : '' }} nav-item"><a href="/station"><i class="fa fa-location-arrow"></i><span class="menu-title" data-i18n="List Station">List Stations</span></a>
             </li>
-            <li class=" nav-item"><a href="/station/create"><i class="fa fa-location-arrow"></i><span class="menu-title" data-i18n="Create Station">Create station</span></a>
+            <li class="{{ (request()->is('*station*')) ? 'active' : '' }}  nav-item"><a href="/station/create"><i class="fa fa-location-arrow"></i><span class="menu-title" data-i18n="Create Station">Create station</span></a>
             </li>
 
       <li class=" navigation-header"><span>Settings</span>
-            <li class=" nav-item"><a href="/user"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">User</span></a>
+            <li class="{{ (request()->is('*user*')) ? 'active' : '' }}  nav-item"><a href="/user"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">User</span></a>
                 <ul class="menu-content">
                     <li><a href="/user"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">List</span></a>
                     </li>
@@ -54,11 +54,11 @@
                     </li>
                 </ul>
             </li>
-            <li class=" nav-item"><a href="/station/create"><i class="fa fa-location-arrow"></i><span class="menu-title" data-i18n="Create Station">Create station</span></a>
+            <li class="{{ (request()->is('*station*')) ? 'active' : '' }}  nav-item"><a href="/station/create"><i class="fa fa-location-arrow"></i><span class="menu-title" data-i18n="Create Station">Create station</span></a>
             </li>
-            <li class=" nav-item"><a href="/station/create"><i class="fa fa-location-arrow"></i><span class="menu-title" data-i18n="Create Station">Create station</span></a>
+            <li class="{{ (request()->is('*station*')) ? 'active' : '' }}  nav-item"><a href="/station/create"><i class="fa fa-location-arrow"></i><span class="menu-title" data-i18n="Create Station">Create station</span></a>
             </li>
-            <li class=" nav-item"><a href="/station/create"><i class="fa fa-location-arrow"></i><span class="menu-title" data-i18n="Create Station">Create station</span></a>
+            <li class="{{ (request()->is('*station*')) ? 'active' : '' }}  nav-item"><a href="/station/create"><i class="fa fa-location-arrow"></i><span class="menu-title" data-i18n="Create Station">Create station</span></a>
             </li>
 
         </ul>

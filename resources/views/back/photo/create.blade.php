@@ -7,6 +7,7 @@
     <div class="row">
         <div class="card col-lg-12 col-md-12 col-sm-12 border-left-primary">
             <div class="card-header">
+                <a href="/photo" class="btn btn-primary"><i class="fa fa-list"></i> List All</a>
                 Create Photo
             </div>
             <div class="card-body">
@@ -18,7 +19,7 @@
                         <label>Photo Title</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon11"><i class="fa fa-closed-captioning"></i></span>
+                                <span class="input-group-text" id="basic-addon11"><i class="fa fa-paragraph"></i></span>
                             </div>
                             <input type="text" name="title" class="form-control" placeholder="Photo Name" aria-label="Photo Name" aria-describedby="basic-addon11" required>
                             @error('title')
@@ -36,7 +37,7 @@
                         <label> Photo </label>
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-photo-video"></i></span>
+                                <span class="input-group-text"><i class="fa fa-photo"></i></span>
                             </div>
                             <div class="custom-file">
                                 <input type="file" name="photo" class="custom-file-input" id="inputGroupFile01">
@@ -55,7 +56,7 @@
                         <label>Album </label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon11"><i class="fa fa-closed-captioning"></i></span>
+                                <span class="input-group-text" id="basic-addon11"><i class="fa fa-file-photo-o"></i></span>
                             </div>
                             <select name="album_id" class="form-control" placeholder="Album Id" aria-label="Select Album" aria-describedby="basic-addon11" required>
                                 @foreach($albums as $album)
@@ -77,9 +78,9 @@
                         <label>Where is This Photo </label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon11"><i class="fa fa-closed-captioning"></i></span>
+                                <span class="input-group-text" id="basic-addon11"><i class="fa fa-location-arrow"></i></span>
                             </div>
-                            <select name="station_id" class="form-control" placeholder="Staion Id" aria-label="Select Staion" aria-describedby="basic-addon11" required>
+                            <select name="station_id" class="form-control" placeholder="Staion Id" aria-label="Select Station" aria-describedby="basic-addon11" required>
                                 <option value="0">None</option>
                                 @foreach($stations as $station)
                                     <option value="{{$station->id}}"> {{$station->name}}</option>

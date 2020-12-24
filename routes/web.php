@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [App\Http\Controllers\FrontController::class, 'index'])->name('welcome');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('back.dashboard');
 
 Route::get('/w_admin', [App\Http\Controllers\DashboardController::class, 'index'])->name('admin');
 
