@@ -57,6 +57,7 @@ class AboutController extends Controller
             'about' => 'required',
             'mission' => 'required',
             'background' => 'required',
+            'background' => 'required',
             'vision' => 'required'
 
         ]);
@@ -83,6 +84,7 @@ class AboutController extends Controller
         $about->vision = $request->vision;
         $about->value = $request->value;
         $about->goal = $request->goal;
+        $about->video = $request->video;
         $about->background = $request->background;
         $about->photo =$url;
         $about->save();

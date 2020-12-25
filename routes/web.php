@@ -36,6 +36,16 @@ Route::resource('/service', App\Http\Controllers\ServiceController::class);
 Route::resource('/blog', App\Http\Controllers\BlogController::class);
 
 
+Route::post('/replay', [App\Http\Controllers\EmailerController::class, 'send_mail'])->name('replay');
+Auth::routes(['register' => false]);
+
+
+Route::get('/gallery', [App\Http\Controllers\FrontPhotoController::class, 'index'])->name('gallery');
+
+
+Route::resource('/front/station', App\Http\Controllers\FrontStationController::class);
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

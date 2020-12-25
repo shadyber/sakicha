@@ -79,7 +79,13 @@
                                     </div>
                                 </div>
 
-
+                                    <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="col-md-12 p-0">Video</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="url" placeholder="Youtube Video Link" name="video" class="form-control p-0 border-0"> </div>
+                                    </div>
+                                    </div>
 
                                     <div class="col-12">
                                         <div class="form-group">

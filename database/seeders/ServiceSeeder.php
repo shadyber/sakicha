@@ -19,5 +19,11 @@ class ServiceSeeder extends Seeder
             'icon' => 'bx bx-upload',
         ]);
 
+        \DB::table('services')->insert([
+            'name' => 'Export',
+            'detail' => 'We export all types of washed and unwashed Ethiopian green coffees,',
+            'icon' => 'bx bx-upload',
+        ]);
+
     }
 }
