@@ -25,6 +25,5 @@ class Address extends Model
         'pintrest',
         'youtube',
         'linkedin'
-
     ];
 }

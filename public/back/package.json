@@ -2,14 +2,14 @@
   "name": "vuexy-html-bootstrap-admin-template",
   "version": "1.1.0",
   "description": "Vuexy admin is super flexible, powerful, clean & modern responsive bootstrap 4 HTML admin template with unlimited possibilities.",
-  "author": "PIXINVENT",
+  "author": "RootSystem",
   "repository": {
     "type": "git",
-    "url": "git@gitlab.com:pixinvent/vuesax-vuejs-admin-template.git"
+    "url": "git@gitlab.com:RootSystem/vuesax-vuejs-admin-template.git"
   },
   "license": "Themeforest Standard Licenses",
   "private": true,
-  "homepage": "https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/vertical-menu-template/",
+  "homepage": "https://RootSystem.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/vertical-menu-template/",
   "main": "gulpfile.js",
   "dependencies": {
     "async": "^3.1.0",

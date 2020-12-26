@@ -30,6 +30,7 @@
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="/back/app-assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="/back/app-assets/css/core/colors/palette-gradient.css">
+
     @stack('css')
     <!-- END: Page CSS-->
 
@@ -79,7 +80,7 @@
 
         </div>
         <div class="content-body">
-
+@include('inc.flash_message')
 @yield('content')
 
         </div>
@@ -105,6 +106,8 @@
 <script src="/back/app-assets/js/scripts/components.js"></script>
 <!-- END: Theme JS-->
 
+<!-- BEGIN: Page JS-->
+<script src="/back/app-assets/js/scripts/extensions/sweet-alerts.js"></script>
 <!-- BEGIN: Page JS-->
 @stack('js')
 <!-- END: Page JS-->

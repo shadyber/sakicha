@@ -11,7 +11,7 @@ Vuexy admin is super flexible, powerful, clean & modern responsive bootstrap adm
 Online Documentation
 --------------------
 You will find documentation in your downloaded zip file from ThemeForest. You can access documentation online as well.
-Documentation URL: https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/documentation
+Documentation URL: https://RootSystem.com/demo/vuexy-html-bootstrap-admin-template/documentation
 
 Change Log
 ----------

@@ -181,8 +181,8 @@ html {
     Description: content sidebar specific scss.
     ----------------------------------------------------------------------------------------
     Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: PIXINVENT
-    Author URL: http://www.themeforest.net/user/pixinvent
+    Author: RootSystem
+    Author URL: http://www.themeforest.net/user/RootSystem
 ==========================================================================================*/
 .sidebar {
   position: relative;
@@ -259,8 +259,8 @@ body.fixed-footer footer.footer-dark {
     Description: Common mixin for menus, contain dark and light version scss.
     ----------------------------------------------------------------------------------------
     Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: PIXINVENT
-    Author URL: http://www.themeforest.net/user/pixinvent
+    Author: RootSystem
+    Author URL: http://www.themeforest.net/user/RootSystem
 ==========================================================================================*/
 .main-menu {
   z-index: 1031;
@@ -1298,8 +1298,8 @@ body.fixed-footer .main-menu.menu-fixed {
 	Description: Search  functionality.
 	----------------------------------------------------------------------------------------
 	Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-	Author: PIXINVENT
-	Author URL: http://www.themeforest.net/user/pixinvent
+	Author: RootSystem
+	Author URL: http://www.themeforest.net/user/RootSystem
 ==========================================================================================*/
 .navbar-container a.nav-link-search {
   float: left; }
@@ -2208,8 +2208,8 @@ body.navbar-static .navbar-container .search-input.open {
     Description: CSS used for demo purpose only. Remove this css from your project.
     ----------------------------------------------------------------------------------------
     Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: PIXINVENT
-    Author URL: http://www.themeforest.net/user/pixinvent
+    Author: RootSystem
+    Author URL: http://www.themeforest.net/user/RootSystem
 ==========================================================================================*/
 .fonticon-container > .fonticon-wrap {
   float: left;
@@ -2280,8 +2280,8 @@ body.navbar-static .navbar-container .search-input.open {
 	Description: CSS used for demo purpose only. Remove this css from your project.
 	----------------------------------------------------------------------------------------
 	Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-	Author: PIXINVENT
-	Author URL: http://www.themeforest.net/user/pixinvent
+	Author: RootSystem
+	Author URL: http://www.themeforest.net/user/RootSystem
 ==========================================================================================*/
 .customizer {
   width: 400px;

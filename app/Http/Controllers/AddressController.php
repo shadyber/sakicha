@@ -20,7 +20,7 @@ class AddressController extends Controller
     public function index()
     {
         //
-        $address=Address::all()->first();
+        $address=Address::all()->last();
         if(!$address){
             return view('back.address.create');
         }

@@ -3,8 +3,8 @@
     Description: Card-statistics page content with Apexchart Examples
     ----------------------------------------------------------------------------------------
     Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: PIXINVENT
-    Author URL: http://www.themeforest.net/user/pixinvent
+    Author: RootSystem
+    Author URL: http://www.themeforest.net/user/RootSystem
 ==========================================================================================*/
 
 $(window).on("load", function(){
