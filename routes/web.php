@@ -41,6 +41,9 @@ Route::post('/replay', [App\Http\Controllers\EmailerController::class, 'send_mai
 Auth::routes(['register' => false]);
 
 
+Route::get('/register', [App\Http\Controllers\DashboardController::class, 'index'])->name('gallery');
+
+
 Route::get('/gallery', [App\Http\Controllers\FrontPhotoController::class, 'index'])->name('gallery');
 
 
