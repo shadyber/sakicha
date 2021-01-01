@@ -135,8 +135,6 @@ class SlideController extends Controller
 //        $slide = Slide::findOrFail($id);
 
         $slide->delete();
-
-
         return redirect()->back()->with('success','Slide Removed');
     }
 }

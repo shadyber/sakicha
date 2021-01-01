@@ -37,6 +37,8 @@
             </li>
              <li class="{{ (request()->is('*slide*')) ? 'active' : '' }}  nav-item"><a href="/slide"><i class="fa fa-image"></i><span class="menu-title" data-i18n="Carousel">Slide </span></a>
             </li>
+            <li class="{{ (request()->is('*blog*')) ? 'active' : '' }}  nav-item"><a href="/blog"><i class="fa fa-image"></i><span class="menu-title" data-i18n="Carousel">Blog </span></a>
+            </li>
             <li class=" navigation-header"><span>Farms</span>
             </li>
 
