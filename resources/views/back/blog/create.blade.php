@@ -89,9 +89,10 @@
                                 <span class="input-group-text" id="basic-addon11"><i class="fa fa-text"></i></span>
                             </div>
                             <select name="category" class="form-control" placeholder="Category" aria-label="Tags" aria-describedby="basic-addon11" required>
-@foreach($blogCategory as $category)
+                            @foreach($blogCategory as $category)
                                 <option value="{{$category->id}}" label="{{$category->name}}">{{$category->detail}}</option>
-    @endforeach
+
+                            @endforeach
                             </select>
                             @error('category')
                             <span class="invalid-feedback" role="alert">

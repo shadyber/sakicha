@@ -59,11 +59,11 @@
 
                             </div>
                         </div>
-                        <a href="/register" class="btn btn-outline-primary float-left btn-inline">Register</a>
 
                         <button type="submit" class="btn btn-primary float-right btn-inline">
                             {{ __('Login') }}
                         </button>
+                        <a href="/register" class="btn btn-outline-primary float-left btn-inline">Register</a>
 
 
                     </form>
