@@ -125,7 +125,7 @@
         <div class="row">
 
           <div class="col-lg-5 align-items-stretch video-box" style='background-image: url("{{$about->photo}}");' data-aos="zoom-in" data-aos-delay="100">
-            <a href="https://www.youtube.com/watch?v=jMWLMUcCGTw" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+            <a href="{{$about->video}}" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
           </div>
 
           <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">

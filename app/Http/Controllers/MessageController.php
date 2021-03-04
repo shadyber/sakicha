@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserMessageMail;
 use App\Models\Message;
 use App\Models\User;
 use App\Notifications\UserMessageNotification;
@@ -65,9 +66,12 @@ class MessageController extends Controller
         $message->message =$request->message;
 
         $message->save();
-$admin=User::find(1);
-        Notification::send($admin, new UserMessageNotification());
+        $admin=User::find(1);
+      //  $admin->notify(new UserMessageNotification())
+     //   Notification::send($admin, new UserMessageNotification());
 
+        $admin->notify(new UserMessageNotification($message));
+        Notification::send($admin, new UserMessageNotification($message));
         print('meesge sent to manager thank you for your interest');
 
     }

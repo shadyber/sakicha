@@ -10,15 +10,16 @@ use Illuminate\Notifications\Notification;
 class UserMessageNotification extends Notification
 {
     use Queueable;
-
+public $message;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($message)
     {
         //
+        $this->message=$message;
     }
 
     /**
@@ -42,8 +43,8 @@ class UserMessageNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Message Recived on Website')
-                    ->action('Notification Action', url('/message'))
-                    ->line('Please Visit http://sakicha.com/w_admin');
+                    ->action('Read Message', url('/message'))
+                    ->line($this->message->message.' Please Visit http://sakicha.com/w_admin');
     }
 
     /**
