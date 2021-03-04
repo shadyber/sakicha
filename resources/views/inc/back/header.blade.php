@@ -55,7 +55,7 @@
 
                             <li class="scrollable-container media-list">
                             @foreach(\App\Models\Message::unreadMessages() as $message)
-                                <a class="d-flex justify-content-between" href="javascript:void(0)">
+                                <a class="d-flex justify-content-between" href="/message/{{$message->id}}">
                                     <div class="media d-flex align-items-start">
                                         <div class="media-left"><i class="feather icon-plus-square font-medium-5 primary"></i></div>
                                         <div class="media-body">
@@ -108,7 +108,7 @@
                                 <img class="round" src="{{Auth::user()->photo}}" alt="{{Auth::user()->name}} avatar" height="40" width="40"></span>
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="/profile"><i class="feather icon-user"></i> My Profile</a>
+                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="/home"><i class="feather icon-user"></i> My Profile</a>
                             <a class="dropdown-item" href="/message"><i class="feather icon-mail"></i> My Inbox</a>
 
                             <div class="dropdown-divider"></div>
