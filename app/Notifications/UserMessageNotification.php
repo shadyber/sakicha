@@ -41,9 +41,9 @@ class UserMessageNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Message Recived on Website')
+                    ->action('Notification Action', url('/message'))
+                    ->line('Please Visit http://sakicha.com/w_admin');
     }
 
     /**
