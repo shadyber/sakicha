@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -62,6 +63,8 @@ class MessageController extends Controller
         $message->message =$request->message;
 
         $message->save();
+$admin=User::find(1);
+ 
         print('meesge sent to manager thank you for your interest');
 
     }
